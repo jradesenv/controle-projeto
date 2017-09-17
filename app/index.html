@@ -22,6 +22,9 @@
 <body>
 
     <div class="fill-height fill-width">
+        <div ng-show="isLoading" class="loader-container">
+            <md-progress-circular class="loader" md-mode="indeterminate"></md-progress-circular>
+        </div>
         <div ui-view=""></div>
     </div>
 
@@ -30,6 +33,7 @@
 
     <!-- services -->
     <script src="services/menu.service.js"></script>
+    <script src="services/login.service.js"></script>
     
     <!-- controllers -->
     <script src="controllers/login.controller.js"></script>

@@ -21,6 +21,7 @@
         'app.controllers'
     ]).run(function($state, $rootScope) {
         $rootScope.logout = logout;
+        $rootScope.isLoading = false;
 
         function logout() {
             $state.go('login');

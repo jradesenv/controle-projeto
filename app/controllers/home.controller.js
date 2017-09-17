@@ -4,14 +4,14 @@
     angular.module('app.controllers')
         .controller('homeController', HomeController)
 
-    function HomeController(menu) {
+    function HomeController(menuService) {
         var vm = this;
 
         //functions for menu-link and menu-toggle
         vm.isOpen = isOpen;
         vm.toggleOpen = toggleOpen;
         vm.autoFocusContent = false;
-        vm.menu = menu;
+        vm.menu = menuService;
 
         vm.status = {
             isFirstOpen: true,
@@ -20,11 +20,11 @@
 
 
         function isOpen(section) {
-            return menu.isSectionSelected(section);
+            return menuService.isSectionSelected(section);
         }
 
         function toggleOpen(section) {
-            menu.toggleSelectSection(section);
+            menuService.toggleSelectSection(section);
         }
     }
 
