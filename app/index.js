@@ -17,6 +17,7 @@
         'ngAnimate',
         'ngAria',
         'ngMessages',
+        "dndLists",
         'ui.router.default',
         'app.controllers'
     ]).run(function($state, $rootScope) {

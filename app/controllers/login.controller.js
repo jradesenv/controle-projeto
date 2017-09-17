@@ -8,9 +8,9 @@
         var vm = this;
         vm.login = login;
         vm.formData = {
-            urlServidor: "",
-            email: "",
-            senha: ""
+            urlServidor: "localhost:8080/tfs",
+            email: "emailteste",
+            senha: "senhateste"
         };
 
         function login() {

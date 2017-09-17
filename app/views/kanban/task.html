@@ -1,0 +1,12 @@
+<md-card ng-click="showTaskDetails($event)">
+    <md-card-header>
+        <span class="task-state {{ 'task-state-' + task.estadoEstimativa}}" title="{{task.estadoEstimativa | capitalize}}"></span>
+        <md-card-header-text>
+            <span class="md-title">{{task.titulo | limitTo:20}}{{task.titulo.length > 20 ? '…' : ''}}</span>
+            <span class="md-subhead">Tempo restante: {{task.tempoRestante}}</span>
+        </md-card-header-text>
+    </md-card-header>
+    <span class="task-icons-container">
+        <span class="fa fa-user-circle"></span> <span>{{task.responsavel | capitalize}}</span>
+    </span>
+</md-card>

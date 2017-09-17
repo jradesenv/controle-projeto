@@ -1,0 +1,131 @@
+ md-list[dnd-list],
+ md-list[dnd-list] > li {
+     position: relative;
+ }
+ 
+ md-list[dnd-list] {
+     min-height: 42px;
+     margin: 0;
+     padding-left: 0;
+     list-style: none;
+ }
+ 
+ .dndDragging {
+     opacity: 0.7;
+ }
+ 
+ .dndDraggingSource {
+     display: none;
+ }
+
+ .dndPlaceholder {
+     background-color: #ddd;
+     min-height: 42px;
+     display: block;
+     position: relative;
+     margin: 10px;
+ }
+
+ .task-list-container {
+     width: 100%;
+     overflow-x: auto;
+     white-space: nowrap;
+     margin-top: 10px;
+     padding: 0 5px;
+ }
+ 
+ task-list {
+     min-width: 285px;
+     width: 20%;
+     margin-right: 5px;
+     margin-left: 5px;
+ }
+ 
+ .task-list {
+     background-color: #e2e4e6;
+     overflow: hidden;
+     width: 100%;
+ }
+ 
+ .task-list md-toolbar {
+     border-radius: 2px 2px 0 0;
+ }
+ 
+ .task-list md-toolbar,
+ .task-list .md-toolbar-tools {
+     height: 50px;
+     min-height: 50px;
+ }
+ 
+ .task-list md-list {
+     overflow-y: auto;
+     padding: 0;
+ }
+ 
+ .new-board .md-errors-spacer {
+     display: none;
+ }
+ 
+ a {
+     text-decoration: none;
+ }
+ 
+ .task-list md-card md-card-header:last-child md-card-avatar {
+     margin-left: 0;
+ }
+ 
+ .form-error {
+     color: red;
+ }
+ 
+ .add-modal-dialog {
+     min-width: 500px;
+ }
+ 
+ .task-state {
+     height: 10px;
+     width: 30px;
+     position: absolute;
+     right: 6px;
+     top: 6px;
+     border-radius: 3px;
+ }
+ 
+ .task-state-good {
+     background-color: green;
+ }
+ 
+ .task-state-warning {
+     background-color: #FBC02D;;
+ }
+ 
+ .task-state-bad {
+     background-color: #D50000;
+ }
+ 
+ .task-icons-container {
+     position: absolute;
+     bottom: 0px;
+     right: 8px;
+ }
+ 
+ .task-icons-container span {
+     margin-left: 5px;
+ }
+ 
+ .task-icons {
+     font-size: 16px !important;
+     height: 16px;
+     width: 16px;
+     min-height: 16px;
+     min-width: 16px;
+ }
+ 
+ .task-list md-card {
+     min-height: 100px;
+     margin: 8px 0 !important;
+ }
+ 
+ .task-list li {
+     margin: 8px !important;
+ }

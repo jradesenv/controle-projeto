@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="lib/angular-material/angular-material.css">
     <link rel="stylesheet" href="lib/components-font-awesome/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="styles/index.css">
+    <link rel="stylesheet" type="text/css" href="styles/kanban.css">
 
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-aria/angular-aria.js"></script>
@@ -17,6 +18,7 @@
     <script src="lib/angular-material/angular-material.js"></script>
     <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="lib/angular-ui-router-default/angular-ui-router-default.js"></script>
+    <script src="lib/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js"></script>
 </head>
 
 <body>
@@ -31,19 +33,27 @@
     <!-- bootstrap app -->
     <script src="index.js"></script>
 
+    <!-- filter -->
+    <script src="filters/arraytodate.filter.js"></script>
+    <script src="filters/capitalize.filter.js"></script>
+
     <!-- services -->
     <script src="services/menu.service.js"></script>
     <script src="services/login.service.js"></script>
+    <script src="services/task.service.js"></script>
     
     <!-- controllers -->
     <script src="controllers/login.controller.js"></script>
     <script src="controllers/home.controller.js"></script>
+    <script src="controllers/kanban.controller.js"></script>
     <script src="controllers/novo-sprint.controller.js"></script>
     <script src="controllers/top-filter.controller.js"></script>
     
     <!-- directives -->
     <script src="directives/menu-toggle.directive.js"></script>
     <script src="directives/menu-link.directive.js"></script>
+    <script src="directives/kanban/task-list.directive.js"></script>
+    <script src="directives/kanban/task.directive.js"></script>
 
     <!-- routes -->
     <script src="routes.js"></script>

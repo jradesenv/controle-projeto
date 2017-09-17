@@ -44,10 +44,7 @@
 
                     deferred.resolve(usuario);
                 }
-            }, 3000);
-
-
-
+            }, 1000);
 
             return deferred.promise;
         }

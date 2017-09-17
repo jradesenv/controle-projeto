@@ -38,7 +38,8 @@
               url: '/kanban',    
               views: {    
                 'content@home': {
-                    templateUrl: 'views/kanban.html'
+                    templateUrl: 'views/kanban.html',
+                    controller: 'kanbanController as vm'
                 }
               }
             })
