@@ -31,6 +31,10 @@
                 '@': {
                   templateUrl: 'views/home.html',
                   controller: 'homeController as vm'
+                },
+                'topcontent@home': {
+                  templateUrl: 'views/top-filter.html',
+                  controller: 'topFilterController as vm'
                 }
               }
             })
@@ -52,10 +56,6 @@
                 'content@home': {
                   templateUrl: 'views/novo_sprint.html',
                   controller: 'novoSprintController as vm'
-                },
-                'topcontent@home': {
-                  templateUrl: 'views/top-filter.html',
-                  controller: 'topFilterController as vm'
                 }
               }
             })
@@ -64,10 +64,6 @@
               views: {    
                 'content@home': {
                     templateUrl: 'views/novo_task.html'
-                },
-                'topcontent@home': {
-                  templateUrl: 'views/top-filter.html',
-                  controller: 'topFilterController as vm'
                 }
               }
             })
@@ -84,10 +80,6 @@
               views: {    
                 'content@home': {
                     templateUrl: 'views/hierarquia_tarefas.html'
-                },
-                'topcontent@home': {
-                  templateUrl: 'views/top-filter.html',
-                  controller: 'topFilterController as vm'
                 }
               }
             })

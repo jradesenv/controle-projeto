@@ -3,7 +3,8 @@
 </div>
 <div class="row">
   <div class="col-lg-12">
-      <div flex layout class="task-list-container">
+      <label ng-show="vm.errorMessage != null">{{vm.errorMessage}}</label>
+      <div ng-show="vm.errorMessage == null" flex layout class="task-list-container">
           <task-list layout ng-repeat="(status, list) in vm.tasks" status="status" task-list="list" on-drop-function="vm.onTaskStatusChange"></task-list>
       </div>
   </div>

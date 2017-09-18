@@ -45,18 +45,22 @@
                         ,responsavel: responsavel //usuario com imageUrl
                     };
                 }
+
+                var nameSufix = projeto.nome.split(" ")[1];
+                if (typeof sprint == "object") {
+                    nameSufix = sprint.nome.split(" ")[1];
+                }
                 
                 var taskList = [
-                    Task("Task 1", "PROPOSED", "02:50", "good", "Jean Robert"),
-                    Task("Task 2", "PROPOSED", "02:50", "good", "Jean Robert"),
-                    Task("Task 3", "ACTIVED", "02:50", "warning", "Jean Robert"),
-                    Task("Task 4", "ACTIVED", "02:50", "warning", "Jean Robert"),
-                    Task("Task 5", "ACTIVED", "02:50", "bad", "Jean Robert"),
-                    Task("Task 6", "RESOLVED", "02:50", "warning", "Jean Robert"),
-                    Task("Task 7", "CLOSED", "02:50", "bad", "Jean Robert"),
-                    Task("Task 8", "CLOSED", "02:50", "bad", "Jean Robert"),
-                    Task("Task 9", "CLOSED", "02:50", "good", "Jean Robert"),
-                    Task("Task 10", "CLOSED", "02:50", "warning", "Jean Robert")
+                    Task("Task " + nameSufix + "1", "PROPOSED", "02:50", "good", "Jean Robert"),
+                    Task("Task " + nameSufix + "2", "PROPOSED", "02:50", "good", "Jean Robert"),
+                    Task("Task " + nameSufix + "3", "ACTIVED", "02:50", "warning", "Jean Robert"),
+                    Task("Task " + nameSufix + "4", "ACTIVED", "02:50", "warning", "Jean Robert"),
+                    Task("Task " + nameSufix + "5", "ACTIVED", "02:50", "bad", "Jean Robert"),
+                    Task("Task " + nameSufix + "6", "RESOLVED", "02:50", "warning", "Jean Robert"),
+                    Task("Task " + nameSufix + "7", "CLOSED", "02:50", "bad", "Jean Robert"),
+                    Task("Task " + nameSufix + "8", "CLOSED", "02:50", "bad", "Jean Robert"),
+                    Task("Task " + nameSufix + "9", "CLOSED", "02:50", "good", "Jean Robert")
                 ];
 
                 deferred.resolve(taskList);

@@ -1,2 +1,27 @@
-<h1> Filtro do topo </h1>
-<p> maneiro né?</p> <button ng-click="vm.filtrar();">FILTRAR</button>
+<div layout="row">
+    <form name="FilterForm">
+        <md-input-container>
+            <label>Projeto</label>
+            <md-select name="projeto" required ng-model="vm.projetoSelecionado" ng-model-options="{trackBy: '$value.nome'}">
+                <md-option ng-repeat="projeto in vm.projetos" ng-value="projeto" ng-selected="vm.projetoSelecionado == projeto">
+                    {{projeto.nome}}
+                </md-option>
+            </md-select>
+            <div ng-messages="FilterForm.projeto.$error" role="alert" multiple="">
+                <div ng-message="required" class="my-message">Selecione um projeto.</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container>
+            <label>Sprint</label>
+            <md-select ng-model="vm.sprintSelecionado" ng-model-options="{trackBy: '$value.nome'}">
+                <md-option><em></em></md-option>
+                <md-option ng-repeat="sprint in vm.sprints" ng-value="sprint" ng-selected="vm.sprintSelecionado == sprint">
+                    {{sprint.nome}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+
+        <md-button ng-disabled="!FilterForm.$valid" ng-click="vm.aplicarFiltro();" class="md-raised md-primary">&nbsp Listar Atividades &nbsp</md-button>
+    </form>
+</div>
