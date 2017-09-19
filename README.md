@@ -1,11 +1,9 @@
 # dependencias globais:  
-- nodejs 6.11.3  
-- bower  
+- nodejs 6.11.3    
 - electron  
   
 # instalar dependencias do projeto  
-- npm install  
-- bower install  
+- npm install    
   
 # rodar
 - npm start  
