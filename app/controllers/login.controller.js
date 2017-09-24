@@ -6,18 +6,18 @@
 
     function LoginController($state, $rootScope, loginService) {
         var vm = this;
-        vm.login = login;
+        vm.doLogin = doLogin;
         vm.formData = {
-            urlServidor: "localhost:8080/tfs",
-            email: "emailteste",
-            senha: "senhateste"
+            serverUrl: "localhost:8080/tfs",
+            username: "emailteste",
+            password: "senhateste"
         };
 
-        function login() {
+        function doLogin() {
             console.log(vm.formData);
             $rootScope.isLoading = true;
 
-            var loginPromise = loginService.efetuarLogin(vm.formData.urlServidor, vm.formData.email, vm.formData.senha);
+            var loginPromise = loginService.doLogin(vm.formData.serverUrl, vm.formData.username, vm.formData.password);
             loginPromise.then(function(usuario) {
                 $rootScope.isLoading = false;
                 $state.go('home.kanban');
@@ -27,9 +27,6 @@
                 alert(errorMessage);
 
             });
-            
-            
-            //
         }
     }
 

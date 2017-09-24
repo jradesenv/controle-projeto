@@ -1,5 +1,5 @@
 .novo-dialog-content {
-  width: 640px;
+  min-width: 640px;
 }
 
 .background-div {

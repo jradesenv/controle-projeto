@@ -13,27 +13,27 @@
             <md-card-content>
                 <form name="Form">
                     <md-input-container class="md-block">
-                        <label>URL do Servidor</label>
-                        <input type="text" name="urlServidor" ng-model="vm.formData.urlServidor" placeholder="url do servidor" required="" />
-                        <div ng-messages="Form.urlServidor.$error" role="alert" multiple="">
+                        <label>URL do Servidor:</label>
+                        <input type="text" name="serverUrl" ng-model="vm.formData.serverUrl" placeholder="url do servidor" required="" />
+                        <div ng-messages="Form.serverUrl.$error" role="alert" multiple="">
                             <div ng-message="required" class="my-message">Informe a url do servidor.</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block">
-                        <label>E-mail</label>
-                        <input type="text" name="email" ng-model="vm.formData.email" placeholder="e-mail" required="" />
-                        <div ng-messages="Form.email.$error" role="alert" multiple="">
-                            <div ng-message="required" class="my-message">Informe seu e-mail.</div>
+                        <label>Usuário:</label>
+                        <input type="text" name="username" ng-model="vm.formData.username" placeholder="usuário" required="" />
+                        <div ng-messages="Form.username.$error" role="alert" multiple="">
+                            <div ng-message="required" class="my-message">Informe seu usuário.</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>Senha:</label>
-                        <input type="password" name="senha" ng-model="vm.formData.senha" placeholder="senha" required="" />
-                        <div ng-messages="Form.senha.$error" role="alert" multiple="">
+                        <input type="password" name="password" ng-model="vm.formData.password" placeholder="senha" required="" />
+                        <div ng-messages="Form.password.$error" role="alert" multiple="">
                             <div ng-message="required" class="my-message">Informe sua senha.</div>
                         </div>
                     </md-input-container>
-                    <md-button ng-disabled="!Form.$valid" ng-click="vm.login();" class="md-raised md-primary">&nbsp Entrar &nbsp</md-button>
+                    <md-button ng-disabled="!Form.$valid" ng-click="vm.doLogin();" class="md-raised md-primary">&nbsp Entrar &nbsp</md-button>
                 </form>
             </md-card-content>
         </md-card>
