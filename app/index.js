@@ -12,6 +12,7 @@
     angular.module('app.controllers', ['app.directives']);
 
     angular.module('app', [
+        'ui.mask',
         'ui.router',
         'ngMaterial',
         'ngAnimate',

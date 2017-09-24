@@ -9,26 +9,58 @@
         var self;
 
         return self = {
-            list: list
+            list: list,
+            listUsersByProject: listUsersByProject
         };
+
+        function listUsersByProject(project) {
+            var deferred = $q.defer();
+            
+            $timeout(function () {
+
+                var User = function (id, name, email) {
+
+                    return {
+                        id: id,
+                        name: name,
+                        email: email
+                    };
+                }
+
+                var projectId = project.id;
+                
+                var userList = [
+                    User(1, "Usuário " + projectId + "1", "user" + projectId + "1@user.com"),
+                    User(2, "Usuário " + projectId + "2", "user" + projectId + "2@user.com"),
+                    User(3, "Usuário " + projectId + "3", "user" + projectId + "3@user.com"),
+                    User(4, "Usuário " + projectId + "4", "user" + projectId + "4@user.com")
+                ];
+
+                deferred.resolve(userList);
+                
+            }, 1000);
+
+            return deferred.promise;
+        }
 
         function list() {
             var deferred = $q.defer();
 
             $timeout(function () {
 
-                var Project = function (name) {
+                var Project = function (id, name) {
 
                     return {
+                        id: id,
                         name: name
                     };
                 }
                 
                 var projectList = [
-                    Project("Project 1"),
-                    Project("Project 2"),
-                    Project("Project 3"),
-                    Project("Project 4")
+                    Project(1, "Project 1"),
+                    Project(2, "Project 2"),
+                    Project(3, "Project 3"),
+                    Project(4, "Project 4")
                 ];
 
                 deferred.resolve(projectList);
