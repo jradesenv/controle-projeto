@@ -23,7 +23,7 @@
         function init() {
             console.log("kanban init");
 
-            atualizarKanban(); //TODO recuperar ultimos filtros do storage
+            atualizarKanban();
         }
 
         function atualizarKanban() {

@@ -20,7 +20,7 @@
 
         sections.push({
             name: 'Relatórios',
-            state: 'home.relatorios',
+            state: 'home.reports',
             type: 'link'
         });
 
@@ -34,13 +34,12 @@
                 icon: 'fa fa-repeat'
             }, {
                 name: 'Task',
-                state: 'home.novo.task',
                 type: 'action',
                 action: function () {
                     if (taskService.canCreateNewTask()) {
                         var opts = {
-                            templateUrl: 'views/dialogs/novo_task.html',
-                            controller: 'novoTaskController as vm',
+                            templateUrl: 'views/dialogs/new-task.html',
+                            controller: 'newTaskController as vm',
                             clickOutsideToClose: true
                         };
         
@@ -61,12 +60,11 @@
 
         sections.push({
             name: 'Sair',
-            state: 'home.sair',
             type: 'action',
             action: function () {
                 var opts = {
-                    templateUrl: 'views/dialogs/sair.html',
-                    controller: 'sairController as vm',
+                    templateUrl: 'views/dialogs/logout.html',
+                    controller: 'logoutController as vm',
                     clickOutsideToClose: true
                 };
 

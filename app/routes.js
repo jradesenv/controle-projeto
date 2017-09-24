@@ -47,55 +47,19 @@
                 }
               }
             })
-            .state('home.novo', {
-              abstract: true
-            })
-            .state('home.novo.sprint', {
-              url: '/sprint',    
-              views: {    
-                'content@home': {
-                  templateUrl: 'views/novo_sprint.html',
-                  controller: 'novoSprintController as vm'
-                }
-              }
-            })
-            .state('home.novo.task', {
-              url: '/task',    
-              views: {    
-                'content@home': {
-                    templateUrl: 'views/novo_task.html'
-                }
-              }
-            })
-             .state('home.novo.bug', {
-              url: '/bug',    
-              views: {    
-                'content@home': {
-                    templateUrl: 'views/novo_bug.html'
-                }
-              }
-            })
             .state('home.hierarquia-tarefas', {
               url: '/hierarquia-tarefas',    
               views: {    
                 'content@home': {
-                    templateUrl: 'views/hierarquia_tarefas.html'
+                    templateUrl: 'views/task-hierarchy.html'
                 }
               }
             })
-            .state('home.relatorios', {
-              url: '/relatorios',    
+            .state('home.reports', {
+              url: '/reports',    
               views: {    
                 'content@home': {
-                    templateUrl: 'views/relatorios.html'
-                }
-              }
-            })
-            .state('home.sair', {
-              url: '/sair',    
-              views: {    
-                'content@home': {
-                    templateUrl: 'views/sair.html'
+                    templateUrl: 'views/reports.html'
                 }
               }
             })
