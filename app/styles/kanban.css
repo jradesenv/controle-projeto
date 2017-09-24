@@ -83,12 +83,13 @@
  }
  
  .task-state {
-     height: 10px;
-     width: 30px;
+     width: 150px;
      position: absolute;
      right: 6px;
      top: 6px;
      border-radius: 3px;
+     text-align: center;
+     color: white;
  }
  
  .task-state-good {
@@ -96,7 +97,7 @@
  }
  
  .task-state-warning {
-     background-color: #FBC02D;;
+     background-color: rgb(210, 159, 32);;
  }
  
  .task-state-bad {
