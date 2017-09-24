@@ -1,3 +1,46 @@
+._md-datepicker-floating-label._md-datepicker-has-calendar-icon>label:not(.md-no-float):not(.md-container-ignore){
+  left: 0px;
+  width: 100%;
+  }
+  
+  .md-icon-button+.md-datepicker-input-container{
+  margin-left: 0px;
+  }
+
+  .md-datepicker-input-container {
+    width: 100%;
+  }
+
+  .md-datepicker-input.md-input {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  ._md-datepicker-floating-label._md-datepicker-has-calendar-icon .md-input-message-animation {
+    margin-left: 0px; 
+  }
+  
+  .md-datepicker-button.md-icon-button {
+  display: none;
+  }
+
+md-toast.toast-error .md-toast-content {
+  background-color: #D50000;
+}
+
+md-toast.toast-warning .md-toast-content {
+  background-color: rgb(177, 133, 23);
+}
+
+md-toast.toast-success .md-toast-content {
+  background-color: #07BA07;
+}
+
+.dialog-header-icon {
+  margin-right: 5px;
+}
+
 md-toast.md-center {
   left: 50%;
   transform: translate3d(-50%, 0, 0);

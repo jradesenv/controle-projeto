@@ -9,10 +9,39 @@
         var self;
 
         return self = {
-            show: show
+            showSuccess: showSuccess,
+            showWarning: showWarning,
+            showError: showError
         };
 
-        function show(title, message, okButtonText) {
+        function showError(message) {
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent(message)
+                    .position('top center')
+                    .toastClass('toast-error')
+            )
+        }
+
+        function showWarning(message) {
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent(message)
+                    .position('top center')
+                    .toastClass('toast-warning')
+            )
+        }
+        
+        function showSuccess(message) {
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent(message)
+                    .position('top center')
+                    .toastClass('toast-success')
+            )
+        }
+
+        //function show(title, message, okButtonText) {
             // var alert = $mdDialog.alert({
             //     title: title,
             //     textContent: message,
@@ -24,13 +53,7 @@
             //     .finally(function () {
             //         alert = undefined;
             //     });
-
-            $mdToast.show(
-                $mdToast.simple()
-                    .textContent(message).position('top center')
-                    
-            )
-        }
+        //}
 
     }
 

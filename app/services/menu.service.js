@@ -4,7 +4,7 @@
     angular.module('app.services')
         .factory('menuService', MenuService)
 
-    function MenuService($location, $mdDialog, taskService, alertService, dialogService) {
+    function MenuService($location, $mdDialog, taskService, alertService, dialogService, sprintService) {
 
         var sections = [{
             name: 'Kanban',
@@ -29,8 +29,14 @@
             type: 'toggle',
             pages: [{
                 name: 'Sprint',
-                type: 'link',
-                state: 'home.novo.sprint',
+                type: 'action',
+                action: function () {
+                    if (sprintService.canCreateNewSprint()) {
+                        dialogService.show('views/dialogs/new-sprint.html', 'newSprintController');
+                    } else {
+                        alertService.showWarning("Para criar um sprint, é necessário selecionar um projeto.");
+                    }
+                },
                 icon: 'fa fa-repeat'
             }, {
                 name: 'Task',
@@ -39,15 +45,21 @@
                     if (taskService.canCreateNewTask()) {
                         dialogService.show('views/dialogs/new-task.html', 'newTaskController');
                     } else {
-                        alertService.show("ATENÇÃO", "Para criar uma task, é necessário selecionar um sprint não finalizado.", "OK");
+                        alertService.showWarning("Para criar uma task, é necessário selecionar um sprint não finalizado.");
                     }
                 },
                 icon: 'fa fa-tasks'
             },
             {
                 name: 'Bug',
-                state: 'home.novo.bug',
-                type: 'link',
+                type: 'action',
+                action: function () {
+                    if (taskService.canCreateNewTask()) {
+                        dialogService.show('views/dialogs/new-task.html', 'newBugController');
+                    } else {
+                        alertService.showWarning("Para criar um bug, é necessário selecionar um sprint não finalizado.");
+                    }
+                },
                 icon: 'fa fa-bug'
             }]
         });

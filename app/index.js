@@ -23,11 +23,16 @@
         'app.controllers'
     ]).run(function($state, $rootScope) {
         $rootScope.logout = logout;
-        $rootScope.atualizarDados = atualizarDados;
+        $rootScope.updateData = updateData;
+        $rootScope.updateHeader = updateHeader;
         $rootScope.isLoading = false;
 
-        function atualizarDados() {
-            $rootScope.$broadcast('filtro-aplicato-event');
+        function updateHeader() {
+            $rootScope.$broadcast('update-header-event');
+        }
+
+        function updateData() {
+            $rootScope.$broadcast('filter-applied-event');
         }
 
         function logout() {

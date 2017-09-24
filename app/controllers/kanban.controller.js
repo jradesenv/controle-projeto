@@ -12,7 +12,7 @@
         vm.tasks;
         vm.onTaskStatusChange = onTaskStatusChange;
 
-        var filtroAplicadoEvent = $rootScope.$on('filtro-aplicato-event', onFiltroAplicado);
+        var filtroAplicadoEvent = $rootScope.$on('filter-applied-event', onFiltroAplicado);
 
         $scope.$on('$destroy', function () {
             filtroAplicadoEvent();

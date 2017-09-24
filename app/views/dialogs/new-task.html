@@ -3,7 +3,11 @@
     <form ng-cloak name="Form">
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2>{{vm.title}}</h2>
+                <i ng-if="vm.taskType == 'task'" class="fa fa-tasks dialog-header-icon"></i>
+                <i ng-if="vm.taskType == 'bug'" class="fa fa-bug dialog-header-icon"></i>
+
+                <h2 ng-if="vm.taskType == 'task'">NOVA TASK</h2>
+                <h2 ng-if="vm.taskType == 'bug'">NOVO BUG</h2>
                 <span flex></span>
                 <md-button aria-label="cancelar" class="md-icon-button" ng-click="vm.cancel()">
                     <i class="fa fa-close"></i>

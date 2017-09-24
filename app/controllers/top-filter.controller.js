@@ -13,15 +13,17 @@
         vm.desfazerAlteracoes = desfazerAlteracoes;
         vm.aplicarFiltro = aplicarFiltro;
 
-        $scope.$watch('vm.projectSelected', function () {
-            console.log("watch projectSelected: ", vm.projectSelected)
-            vm.sprintSelected = null;
-            vm.sprints = [];
-
-            if (vm.projectSelected != null) {
-                buscarSprintsPorProject(vm.projectSelected);
-            }
+        var updateHeaderEvent = $rootScope.$on('update-header-event', onUpdateHeaderEvent);
+        $scope.$on('$destroy', function () {
+            updateHeaderEvent();
         });
+
+        function onUpdateHeaderEvent() {
+            $rootScope.isLoading = true;
+            onProjectSelected();
+        }
+
+        $scope.$watch('vm.projectSelected', onProjectSelected);
 
         init();
 
@@ -53,6 +55,16 @@
                 alert(errorMessage);
             });
 
+        }
+
+        function onProjectSelected () {
+            console.log("onProjectSelected projectSelected: ", vm.projectSelected)
+            vm.sprintSelected = null;
+            vm.sprints = [];
+
+            if (vm.projectSelected != null) {
+                buscarSprintsPorProject(vm.projectSelected);
+            }
         }
 
         function getByNome(arr, nome) {
@@ -99,7 +111,7 @@
             $rootScope.project = vm.projectSelected;
             $rootScope.sprint = vm.sprintSelected;
 
-            $rootScope.atualizarDados();
+            $rootScope.updateData();
         }
 
     }

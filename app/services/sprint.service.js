@@ -4,13 +4,39 @@
     angular.module('app.services')
         .factory('sprintService', SprintService)
 
-    function SprintService($log, $q, $timeout) {
+    function SprintService($log, $q, $timeout, $rootScope) {
 
         var self;
 
         return self = {
+            canCreateNewSprint: canCreateNewSprint,
+            create: create,
             listByProject: listByProject
         };
+
+        function canCreateNewSprint() {
+            if ($rootScope.project == null || typeof $rootScope.project != "object") {
+                return false;
+            }
+            return true;
+        }
+
+        function create(sprint, project) {
+            var deferred = $q.defer();
+
+            $timeout(function () {
+                var createdSprint = {
+                    name: sprint.name,
+                    startDate: sprint.startDate,
+                    endDate: sprint.endDate,
+                    projectId: project.id
+                };
+
+                deferred.resolve(createdSprint);
+            }, 1000);
+
+            return deferred.promise;
+        }
 
         function listByProject(project) {
             var deferred = $q.defer();

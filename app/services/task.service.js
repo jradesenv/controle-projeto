@@ -12,14 +12,35 @@
             list: list,
             listStatus: listStatus,
             canCreateNewTask: canCreateNewTask,
-            create: create
+            create: create,
+            createBug: createBug
         };
+
+        function createBug(bug, project) {
+            var deferred = $q.defer();
+
+            $timeout(function () {
+                var createdBug = {
+                    type: "bug",
+                    title: bug.title,
+                    estimatedTime: bug.estimatedTime,
+                    description: bug.description,
+                    assignee: bug.assignee,
+                    projectId: project.id
+                };
+
+                deferred.resolve(createdBug);
+            }, 1000);
+
+            return deferred.promise;
+        }
 
         function create(task, project) {
             var deferred = $q.defer();
 
             $timeout(function () {
                 var createdTask = {
+                    type: "task",
                     title: task.title,
                     estimatedTime: task.estimatedTime,
                     description: task.description,

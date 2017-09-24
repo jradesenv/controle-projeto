@@ -2,11 +2,11 @@
     'use strict';
 
     angular.module('app.controllers')
-        .controller("newTaskController", NewTaskController);
+        .controller("newBugController", NewBugController);
 
-    function NewTaskController($scope, $mdDialog, $rootScope, projectService, alertService, taskService) {
+    function NewBugController($scope, $mdDialog, $rootScope, projectService, alertService, taskService) {
         var vm = this;
-        vm.taskType = "task";
+        vm.taskType = "bug";
         vm.cancel = cancel;
         vm.save = save;
 
@@ -21,7 +21,7 @@
         init();
 
         function init() {
-            console.log("novo task init");
+            console.log("novo bug init");
             $rootScope.isLoading = true;
 
             var listUsersByProjectPromise = projectService.listUsersByProject($rootScope.project);
@@ -44,17 +44,18 @@
         function save() {
             $rootScope.isLoading = true;
 
-            var taskCreatePromise = taskService.create(vm.task, $rootScope.project);
-            taskCreatePromise.then(function (newTask) {
-                alertService.showSuccess("Task criada com sucesso!");
-                console.log(newTask);
+            var bugCreatePromise = taskService.createBug(vm.task, $rootScope.project);
+            bugCreatePromise.then(function (newBug) {
+                alertService.showSuccess("Bug criado com sucesso!");
+                console.log(newBug);
                 $rootScope.updateData();
                 $mdDialog.cancel();
+                
 
             }, function (errorMessage) {
                 $rootScope.isLoading = false;
                 console.error(errorMessage);
-                alertService.showError("ERRO", "Ocorreu um erro ao tentar salvar a task.");
+                alertService.showError("Ocorreu um erro ao tentar salvar o bug.");
 
             });
             

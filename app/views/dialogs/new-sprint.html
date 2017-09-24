@@ -1,0 +1,55 @@
+<md-dialog aria-label="NOVO SPRINT">
+
+    <form ng-cloak name="Form">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <i class="fa fa-repeat dialog-header-icon"></i>
+
+                <h2>NOVO SPRINT</h2>
+                <span flex></span>
+                <md-button aria-label="cancelar" class="md-icon-button" ng-click="vm.cancel()">
+                    <i class="fa fa-close"></i>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content novo-dialog-content">
+                <md-input-container class="md-block">
+                    <label>Nome:</label>
+                    <input type="text" name="sprintName" ng-model="vm.sprint.name" placeholder="nome" required />
+                    <div ng-messages="Form.sprintName.$error" role="alert" multiple="">
+                        <div ng-message="required" class="my-message">Informe o nome.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Data de início:</label>
+                    <md-datepicker name="sprintStartDate" ng-model="vm.sprint.startDate" md-placeholder="data de início" required></md-datepicker>
+                    <div ng-messages="Form.sprintStartDate.$error" role="alert" multiple="">
+                        <div ng-message="required" class="my-message">Informe a data de início.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Data de início:</label>
+                    <md-datepicker name="sprintEndDate" ng-model="vm.sprint.endDate" md-placeholder="data de fim" required></md-datepicker>
+                    <div ng-messages="Form.sprintEndDate.$error" role="alert" multiple="">
+                        <div ng-message="required" class="my-message">Informe a data de fim.</div>
+                    </div>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button aria-label="cancelar" class="md-primary" ng-click="vm.cancel();">
+                CANCELAR
+            </md-button>
+            <md-button aria-label="salvar" ng-disabled="!Form.$valid" class="md-raised md-primary" ng-click="vm.save();">
+                SALVAR
+            </md-button>
+
+        </md-dialog-actions>
+    </form>
+</md-dialog>
