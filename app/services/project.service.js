@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('app.services')
-        .factory('projetoService', ProjetoService)
+        .factory('projectService', ProjectService)
 
-    function ProjetoService($log, $q, $timeout) {
+    function ProjectService($log, $q, $timeout) {
 
         var self;
 
@@ -17,21 +17,21 @@
 
             $timeout(function () {
 
-                var Projeto = function (nome) {
+                var Project = function (name) {
 
                     return {
-                        nome: nome
+                        name: name
                     };
                 }
                 
-                var projetoList = [
-                    Projeto("Projeto 1"),
-                    Projeto("Projeto 2"),
-                    Projeto("Projeto 3"),
-                    Projeto("Projeto 4")
+                var projectList = [
+                    Project("Project 1"),
+                    Project("Project 2"),
+                    Project("Project 3"),
+                    Project("Project 4")
                 ];
 
-                deferred.resolve(projetoList);
+                deferred.resolve(projectList);
                 
             }, 1000);
 

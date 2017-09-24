@@ -29,9 +29,9 @@
         function atualizarKanban() {
             $rootScope.isLoading = true;
 
-            if ($rootScope.projeto != null) {
+            if ($rootScope.project != null) {
 
-                var listTaskPromise = taskService.list($rootScope.projeto, $rootScope.sprint);
+                var listTaskPromise = taskService.list($rootScope.project, $rootScope.sprint);
                 listTaskPromise.then(function (taskList) {
                     updateTaskBoard(taskList);
 

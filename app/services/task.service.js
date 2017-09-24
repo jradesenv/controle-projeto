@@ -29,7 +29,7 @@
             return deferred.promise;
         }
 
-        function list(projeto, sprint) {
+        function list(project, sprint) {
             var deferred = $q.defer();
 
             $timeout(function () {
@@ -46,9 +46,9 @@
                     };
                 }
 
-                var nameSufix = projeto.nome.split(" ")[1];
+                var nameSufix = project.name.split(" ")[1];
                 if (typeof sprint == "object") {
-                    nameSufix = sprint.nome.split(" ")[1];
+                    nameSufix = sprint.name.split(" ")[1];
                 }
                 
                 var taskList = [

@@ -3,7 +3,7 @@
 - bower  
 - electron  
   
-# instalar dependencias do projeto  
+# instalar dependencias do project  
 - npm install  
 - bower install  
   

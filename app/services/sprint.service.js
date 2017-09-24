@@ -9,28 +9,28 @@
         var self;
 
         return self = {
-            listPorProjeto: listPorProjeto
+            listByProject: listByProject
         };
 
-        function listPorProjeto(projeto) {
+        function listByProject(project) {
             var deferred = $q.defer();
 
             $timeout(function () {
 
-                var Sprint = function (nome) {
+                var Sprint = function (name) {
 
                     return {
-                        nome: nome
+                        name: name
                     };
                 }
 
-                var projetoId = projeto.nome.split(" ")[1];
+                var projectId = project.name.split(" ")[1];
                 
                 var sprintList = [
-                    Sprint("Sprint " + projetoId + "1"),
-                    Sprint("Sprint " + projetoId + "2"),
-                    Sprint("Sprint " + projetoId + "3"),
-                    Sprint("Sprint " + projetoId + "4")
+                    Sprint("Sprint " + projectId + "1"),
+                    Sprint("Sprint " + projectId + "2"),
+                    Sprint("Sprint " + projectId + "3"),
+                    Sprint("Sprint " + projectId + "4")
                 ];
 
                 deferred.resolve(sprintList);
