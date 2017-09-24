@@ -1,3 +1,7 @@
+.novo-dialog-content {
+  width: 640px;
+}
+
 .background-div {
   background-image: url('../images/background.jpeg'); 
   background-size: cover; 
@@ -11,7 +15,7 @@
 }
 
 .login-card {
-  min-width: 600px;
+  min-width: 640px;
 }
 
 .loader-container {

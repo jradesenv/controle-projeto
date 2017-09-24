@@ -35,7 +35,16 @@
             }, {
                 name: 'Task',
                 state: 'home.novo.task',
-                type: 'link',
+                type: 'action',
+                action: function () {
+                    var opts = {
+                        templateUrl: 'views/dialogs/novo_task.html',
+                        controller: 'novoTaskController as vm',
+                        clickOutsideToClose: true
+                    };
+    
+                    $mdDialog.show(opts);
+                },
                 icon: 'fa fa-tasks'
             },
             {
@@ -49,11 +58,11 @@
         sections.push({
             name: 'Sair',
             state: 'home.sair',
-            type: 'function',
-            function: function () {
+            type: 'action',
+            action: function () {
                 var opts = {
-                    templateUrl: 'views/sair.html',
-                    controller: 'sairController',
+                    templateUrl: 'views/dialogs/sair.html',
+                    controller: 'sairController as vm',
                     clickOutsideToClose: true
                 };
 

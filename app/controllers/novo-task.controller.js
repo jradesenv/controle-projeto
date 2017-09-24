@@ -2,18 +2,18 @@
     'use strict';
 
     angular.module('app.controllers')
-        .controller("sairController", function ($scope, $mdDialog, $rootScope) {
+        .controller("novoTaskController", function ($scope, $mdDialog) {
             var vm = this;
+            vm.title = "NOVA TASK";
             vm.cancel = cancel;
-            vm.logout = logout;
+            vm.save = save;            
 
             function cancel () {
                 $mdDialog.cancel();
             }
 
-            function logout () {
+            function save () {
                 $mdDialog.cancel();
-                $rootScope.logout();
             }
         });
 

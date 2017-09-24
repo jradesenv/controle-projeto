@@ -13,7 +13,7 @@
                     <h2 class="menu-heading" ng-if="section.type === 'heading'" id="heading_{{ section.name | nospace }}">
                         {{section}}
                     </h2>
-                    <menu-function section="section" ng-if="section.type === 'function'" function=section.function></menu-function>
+                    <menu-action section="section" ng-if="section.type === 'action'" action=section.action></menu-action>
                     <menu-link section="section" ng-if="section.type === 'link'"></menu-link>
                     <menu-toggle section="section" ng-if="section.type === 'toggle'"></menu-toggle>
                 </li>

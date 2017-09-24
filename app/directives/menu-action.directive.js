@@ -3,26 +3,26 @@
 
     angular.module('app.directives')
         .run(['$templateCache', function ($templateCache) {
-            $templateCache.put('partials/menu-function.tmpl.html',
+            $templateCache.put('partials/menu-action.tmpl.html',
                 '<md-button ng-class="{\'{{section.icon}}\' : true}" \n' +
                 '   ng-click="focusSection()">\n' +
                 '  {{section | humanizeDoc}}\n' +
                 '</md-button>\n' +
                 '');
         }])
-        .directive('menuFunction', function () {
+        .directive('menuAction', function () {
             return {
                 scope: {
                     section: '=',
-                    function: '='
+                    action: '='
                 },
-                templateUrl: 'partials/menu-function.tmpl.html',
+                templateUrl: 'partials/menu-action.tmpl.html',
                 link: function ($scope, $element) {
                     var controller = $element.parent().controller();
 
                     $scope.focusSection = function () {
-                        if (typeof $scope.function == "function") {
-                            $scope.function();
+                        if (typeof $scope.action == "function") {
+                            $scope.action();
                         }
                         // set flag to be used later when
                         // $locationChangeSuccess calls openPage()

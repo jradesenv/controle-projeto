@@ -1,0 +1,50 @@
+<md-dialog aria-label="{{vm.title}}">
+    <form ng-cloak name="Form">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{vm.title}}</h2>
+                <span flex></span>
+                <md-button aria-label="cancelar" class="md-icon-button" ng-click="vm.cancel()">
+                    <i class="fa fa-close"></i>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content novo-dialog-content">
+                <md-input-container class="md-block">
+                    <label>URL do Servidor</label>
+                    <input type="text" name="urlServidor" ng-model="vm.formData.urlServidor" placeholder="url do servidor" required="" />
+                    <div ng-messages="Form.urlServidor.$error" role="alert" multiple="">
+                        <div ng-message="required" class="my-message">Informe a url do servidor.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>E-mail</label>
+                    <input type="text" name="email" ng-model="vm.formData.email" placeholder="e-mail" required="" />
+                    <div ng-messages="Form.email.$error" role="alert" multiple="">
+                        <div ng-message="required" class="my-message">Informe seu e-mail.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Senha:</label>
+                    <input type="password" name="senha" ng-model="vm.formData.senha" placeholder="senha" required="" />
+                    <div ng-messages="Form.senha.$error" role="alert" multiple="">
+                        <div ng-message="required" class="my-message">Informe sua senha.</div>
+                    </div>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button aria-label="cancelar" class="md-primary" ng-click="vm.cancel();">
+                CANCELAR
+            </md-button>
+            <md-button aria-label="salvar" ng-disabled="!Form.$valid" class="md-raised md-primary" ng-click="vm.save();">
+                SALVAR
+            </md-button>
+
+        </md-dialog-actions>
+    </form>
+</md-dialog>

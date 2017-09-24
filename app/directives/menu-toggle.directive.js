@@ -13,7 +13,8 @@
        '</md-button>\n' +
        '<ul ng-show="isOpen()" id="docs-menu-{{section.name | nospace}}" class="menu-toggle-list">\n' +
        '  <li ng-repeat="page in section.pages">\n' +
-       '    <menu-link section="page"></menu-link>\n' +
+       '    <menu-action section="page" ng-if="page.type === \'action\'" action=page.action></menu-action>\n' +
+       '    <menu-link section="page" ng-if="page.type === \'link\'"></menu-link>\n' +
        '  </li>\n' +
        '</ul>\n' +
        '');
