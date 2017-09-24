@@ -4,7 +4,7 @@
     angular.module('app.services')
         .factory('menuService', MenuService)
 
-    function MenuService($location) {
+    function MenuService($location, $mdDialog) {
 
         var sections = [{
             name: 'Kanban',
@@ -49,7 +49,16 @@
         sections.push({
             name: 'Sair',
             state: 'home.sair',
-            type: 'link'
+            type: 'function',
+            function: function () {
+                var opts = {
+                    templateUrl: 'views/sair.html',
+                    controller: 'sairController',
+                    clickOutsideToClose: true
+                };
+
+                $mdDialog.show(opts);
+            }
         });
 
         var self;
