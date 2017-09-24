@@ -1,4 +1,5 @@
 <md-dialog aria-label="{{vm.title}}">
+
     <form ng-cloak name="Form">
         <md-toolbar>
             <div class="md-toolbar-tools">
@@ -28,8 +29,8 @@
                 <md-input-container class="md-block">
                     <label>Tempo estimado:</label>
 
-                    <input type="text" ui-mask-placeholder-char="space" name="taskEstimatedTime" placeholder="" ng-model="vm.task.estimatedTime" ui-mask="99:99" model-view-value="true"
-                    />
+                    <input type="text" ui-mask-placeholder-char="space" name="taskEstimatedTime" placeholder="" ng-model="vm.task.estimatedTime"
+                        ui-mask="99:99" model-view-value="true" />
                     <div ng-messages="Form.taskEstimatedTime.$error" role="alert" multiple="">
                         <div ng-message="mask" class="my-message">Formato deve ser hh:mm.</div>
                     </div>

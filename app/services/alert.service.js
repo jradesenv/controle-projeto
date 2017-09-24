@@ -4,7 +4,7 @@
     angular.module('app.services')
         .factory('alertService', AlertService)
 
-    function AlertService($mdDialog) {
+    function AlertService($mdDialog, $mdToast) {
 
         var self;
 
@@ -13,17 +13,23 @@
         };
 
         function show(title, message, okButtonText) {
-            var alert = $mdDialog.alert({
-                title: title,
-                textContent: message,
-                ok: okButtonText
-            });
+            // var alert = $mdDialog.alert({
+            //     title: title,
+            //     textContent: message,
+            //     ok: okButtonText
+            // });
 
-            $mdDialog
-                .show(alert)
-                .finally(function () {
-                    alert = undefined;
-                });
+            // $mdDialog
+            //     .show(alert)
+            //     .finally(function () {
+            //         alert = undefined;
+            //     });
+
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent(message).position('top center')
+                    
+            )
         }
 
     }

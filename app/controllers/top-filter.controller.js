@@ -99,7 +99,7 @@
             $rootScope.project = vm.projectSelected;
             $rootScope.sprint = vm.sprintSelected;
 
-            $rootScope.$broadcast('filtro-aplicato-event');
+            $rootScope.atualizarDados();
         }
 
     }

@@ -11,8 +11,27 @@
         return self = {
             list: list,
             listStatus: listStatus,
-            canCreateNewTask: canCreateNewTask
+            canCreateNewTask: canCreateNewTask,
+            create: create
         };
+
+        function create(task, project) {
+            var deferred = $q.defer();
+
+            $timeout(function () {
+                var createdTask = {
+                    title: task.title,
+                    estimatedTime: task.estimatedTime,
+                    description: task.description,
+                    assignee: task.assignee,
+                    projectId: project.id
+                };
+
+                deferred.resolve(createdTask);
+            }, 1000);
+
+            return deferred.promise;
+        }
 
         function canCreateNewTask() {
             if ($rootScope.sprint == null || typeof $rootScope.sprint != "object" || $rootScope.sprint.endDate < (new Date())) {
@@ -32,7 +51,7 @@
                     "CLOSED"
                 ];
                 deferred.resolve(statusList);
-            }, 0);
+            }, 1000);
 
             return deferred.promise;
         }
@@ -47,10 +66,10 @@
 
                     return {
                         titulo: titulo
-                        ,status: status
-                        ,tempoRestante: tempoRestante
-                        ,estadoEstimativa: estadoEstimativa //LOW, MEDIUM, HIGH, URGENT
-                        ,responsavel: responsavel //usuario com imageUrl
+                        , status: status
+                        , tempoRestante: tempoRestante
+                        , estadoEstimativa: estadoEstimativa //LOW, MEDIUM, HIGH, URGENT
+                        , responsavel: responsavel //usuario com imageUrl
                     };
                 }
 
@@ -58,7 +77,7 @@
                 if (typeof sprint == "object") {
                     nameSufix = sprint.name.split(" ")[1];
                 }
-                
+
                 var taskList = [
                     Task("Task " + nameSufix + "1", "PROPOSED", "02:50", "good", "Jean Robert"),
                     Task("Task " + nameSufix + "2", "PROPOSED", "02:50", "good", "Jean Robert"),
@@ -72,7 +91,7 @@
                 ];
 
                 deferred.resolve(taskList);
-                
+
             }, 1000);
 
             return deferred.promise;

@@ -23,7 +23,12 @@
         'app.controllers'
     ]).run(function($state, $rootScope) {
         $rootScope.logout = logout;
+        $rootScope.atualizarDados = atualizarDados;
         $rootScope.isLoading = false;
+
+        function atualizarDados() {
+            $rootScope.$broadcast('filtro-aplicato-event');
+        }
 
         function logout() {
             $state.go('login');

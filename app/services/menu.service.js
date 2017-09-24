@@ -4,7 +4,7 @@
     angular.module('app.services')
         .factory('menuService', MenuService)
 
-    function MenuService($location, $mdDialog, taskService, alertService) {
+    function MenuService($location, $mdDialog, taskService, alertService, dialogService) {
 
         var sections = [{
             name: 'Kanban',
@@ -37,13 +37,7 @@
                 type: 'action',
                 action: function () {
                     if (taskService.canCreateNewTask()) {
-                        var opts = {
-                            templateUrl: 'views/dialogs/new-task.html',
-                            controller: 'newTaskController as vm',
-                            clickOutsideToClose: true
-                        };
-        
-                        $mdDialog.show(opts);
+                        dialogService.show('views/dialogs/new-task.html', 'newTaskController');
                     } else {
                         alertService.show("ATENÇÃO", "Para criar uma task, é necessário selecionar um sprint não finalizado.", "OK");
                     }
@@ -62,13 +56,7 @@
             name: 'Sair',
             type: 'action',
             action: function () {
-                var opts = {
-                    templateUrl: 'views/dialogs/logout.html',
-                    controller: 'logoutController as vm',
-                    clickOutsideToClose: true
-                };
-
-                $mdDialog.show(opts);
+                dialogService.show('views/dialogs/logout.html', 'logoutController');
             }
         });
 
