@@ -2,8 +2,8 @@
     <form name="FilterForm">
         <md-input-container>
             <label>Projeto</label>
-            <md-select name="project" required ng-model="vm.projectSelecionado" ng-model-options="{trackBy: '$value.name'}">
-                <md-option ng-repeat="project in vm.projects" ng-value="project" ng-selected="vm.projectSelecionado == project">
+            <md-select name="project" required ng-model="vm.projectSelected" ng-model-options="{trackBy: '$value.name'}">
+                <md-option ng-repeat="project in vm.projects" ng-value="project" ng-selected="vm.projectSelected == project">
                     {{project.name}}
                 </md-option>
             </md-select>
@@ -22,6 +22,8 @@
             </md-select>
         </md-input-container>
 
-        <md-button ng-disabled="!FilterForm.$valid" ng-click="vm.aplicarFiltro();" class="md-raised md-primary">&nbsp Listar Atividades &nbsp</md-button>
+        <md-button ng-disabled="!FilterForm.$valid" ng-click="vm.aplicarFiltro();" class="md-raised md-primary">&nbsp APLICAR FILTRO &nbsp</md-button>
+        <md-button ng-cloak ng-show="FilterForm.$valid && (vm.projectSelected != $root.project || vm.sprintSelected != $root.sprint)" ng-click="vm.desfazerAlteracoes();" class="md-raised md-warn">&nbsp DESFAZER &nbsp</md-button>
+        <label ng-cloak ng-show="FilterForm.$valid && (vm.projectSelected != $root.project || vm.sprintSelected != $root.sprint)" class="warning-label">* Existem alterações ainda não aplicadas</label>
     </form>
 </div>

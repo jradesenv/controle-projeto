@@ -7,19 +7,19 @@
     function TopFilterController(projectService, sprintService, $scope, $rootScope) {
         var vm = this;
         vm.projects = [];
-        //vm.projectSelecionado = null;
+        vm.projectSelected = null;
         vm.sprints = [];
         vm.sprintSelected = null;
-
+        vm.desfazerAlteracoes = desfazerAlteracoes;
         vm.aplicarFiltro = aplicarFiltro;
 
-        $scope.$watch('vm.projectSelecionado', function () {
-            console.log("watch projectSelecionado: ", vm.projectSelecionado)
+        $scope.$watch('vm.projectSelected', function () {
+            console.log("watch projectSelected: ", vm.projectSelected)
             vm.sprintSelected = null;
             vm.sprints = [];
 
-            if (vm.projectSelecionado != null) {
-                buscarSprintsPorProject(vm.projectSelecionado);
+            if (vm.projectSelected != null) {
+                buscarSprintsPorProject(vm.projectSelected);
             }
         });
 
@@ -35,17 +35,17 @@
                 vm.projects = projectList;
 
                 if ($rootScope.project != null) {
-                    vm.projectSelecionado = getByNome(vm.projects, $rootScope.project.name); //para pegar a referencia atual
-                
+                    vm.projectSelected = getByNome(vm.projects, $rootScope.project.name); //para pegar a referencia atual
+
                 } else {
-                    vm.projectSelecionado = null;
+                    vm.projectSelected = null;
                 }
 
                 console.log("projects: ", vm.projects);
-                console.log("projectSelecionado: ", vm.projectSelecionado);
+                console.log("projectSelected: ", vm.projectSelected);
 
-                if (vm.projectSelecionado != null) {
-                    buscarSprintsPorProject(vm.projectSelecionado);
+                if (vm.projectSelected != null) {
+                    buscarSprintsPorProject(vm.projectSelected);
                 } else {
                     $rootScope.isLoading = false;
                 }
@@ -70,10 +70,10 @@
             var listSprintPromise = sprintService.listByProject(project);
             listSprintPromise.then(function (sprintList) {
                 vm.sprints = sprintList;
-                
+
                 if ($rootScope.project != null) {
                     vm.sprintSelected = getByNome(vm.sprints, $rootScope.sprint.name); //para pegar a referencia atual
-                
+
                 } else {
                     vm.sprintSelected = null;
                 }
@@ -88,10 +88,15 @@
             });
         }
 
+        function desfazerAlteracoes() {
+            vm.projectSelected = $rootScope.project;
+            vm.sprintSelected = $rootScope.sprint;
+        }
+
         function aplicarFiltro() {
-            console.log("filtro aplicado: ", vm.projectSelecionado, vm.sprintSelected);
-            
-            $rootScope.project = vm.projectSelecionado;
+            console.log("filtro aplicado: ", vm.projectSelected, vm.sprintSelected);
+
+            $rootScope.project = vm.projectSelected;
             $rootScope.sprint = vm.sprintSelected;
 
             $rootScope.$broadcast('filtro-aplicato-event');

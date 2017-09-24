@@ -4,14 +4,22 @@
     angular.module('app.services')
         .factory('taskService', TaskService)
 
-    function TaskService($log, $q, $timeout) {
+    function TaskService($log, $q, $timeout, $rootScope) {
 
         var self;
 
         return self = {
             list: list,
-            listStatus: listStatus
+            listStatus: listStatus,
+            canCreateNewTask: canCreateNewTask
         };
+
+        function canCreateNewTask() {
+            if ($rootScope.sprint == null || typeof $rootScope.sprint != "object" || $rootScope.sprint.endDate < (new Date())) {
+                return false;
+            }
+            return true;
+        }
 
         function listStatus() {
             var deferred = $q.defer();

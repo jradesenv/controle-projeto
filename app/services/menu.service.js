@@ -4,7 +4,7 @@
     angular.module('app.services')
         .factory('menuService', MenuService)
 
-    function MenuService($location, $mdDialog) {
+    function MenuService($location, $mdDialog, taskService, alertService) {
 
         var sections = [{
             name: 'Kanban',
@@ -37,13 +37,17 @@
                 state: 'home.novo.task',
                 type: 'action',
                 action: function () {
-                    var opts = {
-                        templateUrl: 'views/dialogs/novo_task.html',
-                        controller: 'novoTaskController as vm',
-                        clickOutsideToClose: true
-                    };
-    
-                    $mdDialog.show(opts);
+                    if (taskService.canCreateNewTask()) {
+                        var opts = {
+                            templateUrl: 'views/dialogs/novo_task.html',
+                            controller: 'novoTaskController as vm',
+                            clickOutsideToClose: true
+                        };
+        
+                        $mdDialog.show(opts);
+                    } else {
+                        alertService.show("ATENÇÃO", "Para criar uma task, é necessário selecionar um sprint não finalizado.", "OK");
+                    }
                 },
                 icon: 'fa fa-tasks'
             },
