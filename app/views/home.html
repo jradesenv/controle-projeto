@@ -20,13 +20,13 @@
 
         </md-content>
     </md-sidenav>
-    <md-content flex>
-        <md-backdrop ng-show="isLoading" id="loading-backdrop" class="md-opaque md-default-theme">
+    <md-content flex class="transparent-background-div">
+        <md-backdrop ng-show="isLoading" id="loading-backdrop" class="md-opaque md-default-theme loader-background">
             <md-progress-circular class="loader"  md-mode="indeterminate"></md-progress-circular>
         </md-backdrop>
             
-        <ui-view name="topcontent"></ui-view>
-        <ui-view name="content"></ui-view>
+        <ui-view class="top-content-div" name="topcontent"></ui-view>
+        <ui-view class="content-div" name="content"></ui-view>
     </md-content>
 
 </div>

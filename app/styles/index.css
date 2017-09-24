@@ -1,3 +1,15 @@
+.background-div {
+  background-image: url('../images/background.jpeg'); 
+  background-size: cover; 
+  background-position: center;
+}
+
+.transparent-background-div {
+  background-image: url('../images/transparent_background.png'); 
+  background-size: cover; 
+  background-position: center;
+}
+
 .login-card {
   min-width: 600px;
 }
