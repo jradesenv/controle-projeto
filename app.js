@@ -8,22 +8,26 @@ let win;
 
 function createWindow() {
     // Create the browser window.
-    win = new BrowserWindow({ 
-        width: 1024, 
-        height: 900, 
-        minWidth: 1024,
-        minHeight: 900
-    });
+    // win = new BrowserWindow({ 
+    //     width: 1024, 
+    //     height: 900, 
+    //     minWidth: 1024,
+    //     minHeight: 900
+    // });
+    win = new BrowserWindow({show: false});
+    win.maximize();
     win.setMenu(null);
+
     // and load the index.html of the app.
     win.loadURL(url.format({
         pathname: path.join(__dirname, 'app', 'index.html'),
         protocol: 'file:',
         slashes: true
     }));
-
+    win.show();
+    
     // Open the DevTools.
-    //win.webContents.openDevTools()
+    win.webContents.openDevTools()
 
     // Emitted when the window is closed.
     win.on('closed', () => {
