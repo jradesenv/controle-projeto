@@ -25,16 +25,24 @@
 
                 <md-input-container class="md-block">
                     <label>Data de início:</label>
-                    <md-datepicker name="sprintStartDate" ng-model="vm.sprint.startDate" md-placeholder="data de início" required></md-datepicker>
+
+                    <input type="date" max="{{vm.sprint.endDate != undefined ? vm.sprint.endDate : '9999-01-01' | date: 'yyyy-MM-dd'}}" min="{{'1990-01-01' | date: 'yyyy-MM-dd'}}" name="sprintStartDate" ng-model="vm.sprint.startDate" placeholder="data de início" required />
                     <div ng-messages="Form.sprintStartDate.$error" role="alert" multiple="">
+                        <div ng-message="min">Data informada está abaixo do permitido.</div>
+                        <div ng-message="max">Data informada está acima do permitido.</div>
+                        <div ng-message="date">Informe uma data válida.</div>
                         <div ng-message="required" class="my-message">Informe a data de início.</div>
                     </div>
                 </md-input-container>
 
                 <md-input-container class="md-block">
                     <label>Data de início:</label>
-                    <md-datepicker name="sprintEndDate" ng-model="vm.sprint.endDate" md-placeholder="data de fim" required></md-datepicker>
+
+                    <input type="date" min="{{vm.sprint.startDate != undefined ? vm.sprint.startDate : '0001-01-01' | date: 'yyyy-MM-dd'}}" max="{{'2999-01-01' | date: 'yyyy-MM-dd'}}" name="sprintEndDate" ng-model="vm.sprint.endDate" placeholder="data de fim" required />
                     <div ng-messages="Form.sprintEndDate.$error" role="alert" multiple="">
+                        <div ng-message="min">Data informada está abaixo do permitido.</div>
+                        <div ng-message="max">Data informada está acima do permitido.</div>
+                        <div ng-message="date">Informe uma data válida.</div>
                         <div ng-message="required" class="my-message">Informe a data de fim.</div>
                     </div>
                 </md-input-container>
