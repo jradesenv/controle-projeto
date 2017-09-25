@@ -43,7 +43,9 @@
                 type: 'action',
                 action: function () {
                     if (taskService.canCreateNewTask()) {
-                        dialogService.show('views/dialogs/new-task.html', 'newTaskController');
+                        dialogService.show('views/dialogs/new-task.html', 'newTaskController', {
+                            type: 'task'
+                        });
                     } else {
                         alertService.showWarning("Para criar uma task, é necessário selecionar um sprint não finalizado.");
                     }
@@ -55,7 +57,9 @@
                 type: 'action',
                 action: function () {
                     if (taskService.canCreateNewTask()) {
-                        dialogService.show('views/dialogs/new-task.html', 'newBugController');
+                        dialogService.show('views/dialogs/new-task.html', 'newTaskController', {
+                            type: 'bug'
+                        });
                     } else {
                         alertService.showWarning("Para criar um bug, é necessário selecionar um sprint não finalizado.");
                     }

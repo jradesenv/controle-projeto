@@ -4,14 +4,15 @@
     angular.module('app.controllers')
         .controller("newTaskController", NewTaskController);
 
-    function NewTaskController($scope, $mdDialog, $rootScope, projectService, alertService, taskService) {
+    function NewTaskController($scope, $mdDialog, $rootScope, projectService, alertService, taskService, parameters) {
         var vm = this;
-        vm.taskType = "task";
+        vm.taskType = parameters.type;
         vm.cancel = cancel;
         vm.save = save;
 
         vm.userList = [];
         vm.task = {
+            type: parameters.type,
             title: "",
             description: "",
             estimatedTime: "", //hh:mm
@@ -46,7 +47,7 @@
 
             var taskCreatePromise = taskService.create(vm.task, $rootScope.project);
             taskCreatePromise.then(function (newTask) {
-                alertService.showSuccess("Task criada com sucesso!");
+                alertService.showSuccess("Item criado com sucesso!");
                 console.log(newTask);
                 $rootScope.updateData();
                 $mdDialog.cancel();
@@ -54,7 +55,7 @@
             }, function (errorMessage) {
                 $rootScope.isLoading = false;
                 console.error(errorMessage);
-                alertService.showError("ERRO", "Ocorreu um erro ao tentar salvar a task.");
+                alertService.showError("ERRO", "Ocorreu um erro ao tentar salvar o item.");
 
             });
             

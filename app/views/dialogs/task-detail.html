@@ -1,4 +1,4 @@
-<md-dialog aria-label="{{vm.taskType == 'task' ? 'NOVA TASK' : 'NOVO BUG'}}">
+<md-dialog aria-label="{{vm.taskType == 'task' ? 'TASK' : 'BUG'}}">
 
     <form ng-cloak name="Form">
         <md-toolbar>
@@ -6,8 +6,8 @@
                 <i ng-if="vm.taskType == 'task'" class="fa fa-tasks dialog-header-icon"></i>
                 <i ng-if="vm.taskType == 'bug'" class="fa fa-bug dialog-header-icon"></i>
 
-                <h2 ng-if="vm.taskType == 'task'">NOVA TASK</h2>
-                <h2 ng-if="vm.taskType == 'bug'">NOVO BUG</h2>
+                <h2 ng-if="vm.taskType == 'task'">TASK</h2>
+                <h2 ng-if="vm.taskType == 'bug'">BUG</h2>
                 <span flex></span>
                 <md-button aria-label="cancelar" class="md-icon-button" ng-click="vm.cancel()">
                     <i class="fa fa-close"></i>
@@ -30,26 +30,42 @@
                     <textarea name="taskDescription" ng-model="vm.task.description" placeholder="descrição"></textarea>
                 </md-input-container>
 
-                <div flex class="md-block custom-input-container">
+                <md-input-container class="md-block">
                     <label>Responsável:</label>
-                    
-                    <md-select name="taskAssignee" placeholder="responsável" ng-model="vm.task.assignee" ng-model-options="{trackBy: '$value.id'}">
+                    <md-select name="taskAssignee" ng-model="vm.task.assignee" ng-model-options="{trackBy: '$value.id'}">
                         <md-option><em></em></md-option>
                         <md-option ng-repeat="user in vm.userList" ng-value="user" ng-selected="vm.task.assignee == user">
                             {{user.name}}
                         </md-option>
                     </md-select>
+                </md-input-container>
+
+                <div layout-gt-sm="row">
+
+                        <md-input-container class="md-block">
+                            <label>Tempo estimado:</label>
+
+                            <input type="text" ui-mask-placeholder-char="space" name="taskEstimatedTime" placeholder="" ng-model="vm.task.estimatedTime"
+                                ui-mask="99:99" model-view-value="true" readonly />
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <label>Tempo restante:</label>
+
+                            <input type="text" ui-mask-placeholder-char="space" name="taskTimeLeft" placeholder="" ng-model="vm.task.timeLeft"
+                                ui-mask="99:99" model-view-value="true" readonly />
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <label>Tempo gasto:</label>
+
+                            <input type="text" ui-mask-placeholder-char="space" name="taskTimeSpent" placeholder="" ng-model="vm.task.timeSpent"
+                                ui-mask="99:99" model-view-value="true" readonly />
+                        </md-input-container>
+
                 </div>
 
-                <md-input-container class="md-block">
-                    <label>Tempo estimado:</label>
 
-                    <input type="text" ui-mask-placeholder-char="space" name="taskEstimatedTime" placeholder="" ng-model="vm.task.estimatedTime"
-                        ui-mask="99:99" model-view-value="true" />
-                    <div ng-messages="Form.taskEstimatedTime.$error" role="alert" multiple="">
-                        <div ng-message="mask" class="my-message">Formato deve ser hh:mm.</div>
-                    </div>
-                </md-input-container>
             </div>
         </md-dialog-content>
 
