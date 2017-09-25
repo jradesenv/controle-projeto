@@ -11,6 +11,7 @@
         vm.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
         vm.tasks;
         vm.onTaskStatusChange = onTaskStatusChange;
+        vm.onTaskClick = onTaskClick
 
         var filtroAplicadoEvent = $rootScope.$on('filter-applied-event', onFiltroAplicado);
 
@@ -57,6 +58,10 @@
 
         function onFiltroAplicado(event, data) {
             atualizarKanban();
+        }
+
+        function onTaskClick(task) {
+            console.log("onTaskClick: ", task);
         }
 
         function onTaskStatusChange(index, task, status) {

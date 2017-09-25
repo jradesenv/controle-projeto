@@ -11,6 +11,7 @@
                 taskList: '=taskList',
                 status: '=status',
                 onDropFunction: '=onDropFunction',
+                onTaskClick: '=onTaskClick'
             },
             link: function($scope) {
                 console.log("taskList link");

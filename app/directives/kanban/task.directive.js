@@ -8,12 +8,17 @@
             restrict: 'E',
             templateUrl: 'views/kanban/task.html',
             scope: {
-                task: '=task'
+                task: '=task',
+                onTaskClick: '=onTaskClick'
             },
             link: function ($scope) {
 
-                $scope.showTaskDetails = function (ev) {
-                    console.log("show task detail: ", ev);
+                $scope.taskClicked = function (task) {
+                    console.log("show task detail: ", task);
+
+                    if (typeof $scope.onTaskClick == "function") {
+                        $scope.onTaskClick(task);
+                    }
                 };
 
                 function updateTask(task) {

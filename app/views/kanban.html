@@ -5,7 +5,7 @@
   <div class="col-lg-12">
       <label ng-show="vm.errorMessage != null">{{vm.errorMessage}}</label>
       <div ng-show="vm.errorMessage == null" flex layout class="task-list-container">
-          <task-list layout ng-repeat="(status, list) in vm.tasks" status="status" task-list="list" on-drop-function="vm.onTaskStatusChange"></task-list>
+          <task-list layout ng-repeat="(status, list) in vm.tasks" status="status" task-list="list" on-task-click="vm.onTaskClick" on-drop-function="vm.onTaskStatusChange"></task-list>
       </div>
   </div>
 </div>

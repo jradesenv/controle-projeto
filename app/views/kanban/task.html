@@ -1,4 +1,4 @@
-<md-card ng-click="showTaskDetails($event)">
+<md-card ng-click="taskClicked(task)">
     <md-card-header>
         <div class="task-state {{ 'task-state-' + task.estadoEstimativa}}" title="{{task.estadoEstimativa | capitalize}}">{{task.estadoEstimativa | taskState}}</div>
         <md-card-header-text>

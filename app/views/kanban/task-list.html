@@ -9,7 +9,7 @@
     <div layout flex>
         <md-list flex dnd-list="taskList" dnd-drop="dropCallback(index, item, status)">
             <li ng-repeat="item in taskList" dnd-draggable="item" dnd-effect-allowed="move" dnd-moved="taskList.splice($index, 1)">
-                <task task="item"></task>
+                <task task="item" on-task-click="onTaskClick"></task>
             </li>
         </md-list>
     </div>

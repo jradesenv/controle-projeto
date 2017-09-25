@@ -2,26 +2,21 @@
     'use strict';
 
     angular.module('app.controllers')
-        .controller("newTaskController", NewTaskController);
+        .controller("taskDetailController", TaskDetailController);
 
-    function NewTaskController($scope, $mdDialog, $rootScope, projectService, alertService, taskService) {
+    function TaskDetailController($scope, $mdDialog, $rootScope, projectService, alertService, taskService, parameters) {
         var vm = this;
-        vm.taskType = "task";
+        vm.taskType = parameters.type;
         vm.cancel = cancel;
         vm.save = save;
 
         vm.userList = [];
-        vm.task = {
-            title: "",
-            description: "",
-            estimatedTime: "", //hh:mm
-            assignee: null
-        };
+        vm.task = parameters.task;
 
         init();
 
         function init() {
-            console.log("novo task init");
+            console.log("task detail init");
             $rootScope.isLoading = true;
 
             var listUsersByProjectPromise = projectService.listUsersByProject($rootScope.project);
@@ -46,7 +41,7 @@
 
             var taskCreatePromise = taskService.create(vm.task, $rootScope.project);
             taskCreatePromise.then(function (newTask) {
-                alertService.showSuccess("Task criada com sucesso!");
+                alertService.showSuccess("Item atualizado com sucesso!");
                 console.log(newTask);
                 $rootScope.updateData();
                 $mdDialog.cancel();
@@ -54,7 +49,7 @@
             }, function (errorMessage) {
                 $rootScope.isLoading = false;
                 console.error(errorMessage);
-                alertService.showError("ERRO", "Ocorreu um erro ao tentar salvar a task.");
+                alertService.showError("ERRO", "Ocorreu um erro ao tentar atualizar o item.");
 
             });
             
