@@ -14,8 +14,6 @@
             link: function ($scope) {
 
                 $scope.taskClicked = function (task) {
-                    console.log("show task detail: ", task);
-
                     if (typeof $scope.onTaskClick == "function") {
                         $scope.onTaskClick(task);
                     }

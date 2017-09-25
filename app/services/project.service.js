@@ -30,8 +30,8 @@
                 var projectId = project.id;
                 
                 var userList = [
-                    User(1, "Usuário " + projectId + "1", "user" + projectId + "1@user.com"),
-                    User(2, "Usuário " + projectId + "2", "user" + projectId + "2@user.com"),
+                    User(1, "Jean Robert", "jeanrobert@user.com"),
+                    User(2, "Guilherme", "guilherme@user.com"),
                     User(3, "Usuário " + projectId + "3", "user" + projectId + "3@user.com"),
                     User(4, "Usuário " + projectId + "4", "user" + projectId + "4@user.com")
                 ];

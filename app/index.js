@@ -26,6 +26,8 @@
         $rootScope.updateData = updateData;
         $rootScope.updateHeader = updateHeader;
         $rootScope.isLoading = false;
+        $rootScope.project = null;
+        $rootScope.sprint = null;
 
         function updateHeader() {
             $rootScope.$broadcast('update-header-event');

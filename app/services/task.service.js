@@ -82,40 +82,62 @@
 
             $timeout(function () {
 
-                var Task = function (titulo, status, tempoRestante, estadoEstimativa, responsavel) {
-                    //Título, Responsável, Tempo restante para conclusão e botão para ver detalhes
-
+                var Task = function (type, title, status, description, estimatedTime, timeLeft, timeSpent, assignee) {
                     return {
-                        titulo: titulo
-                        , status: status
-                        , tempoRestante: tempoRestante
-                        , estadoEstimativa: estadoEstimativa //LOW, MEDIUM, HIGH, URGENT
-                        , responsavel: responsavel //usuario com imageUrl
+                        type: type,
+                        title: title,
+                        status: status,
+                        description: description,
+                        estimatedTime: estimatedTime,
+                        timeLeft: timeLeft,
+                        timeSpent: timeSpent,
+                        taskHealth: "",
+                        assignee: assignee,
+                        projectId: project.id
                     };
                 }
 
                 var nameSufix = project.name.split(" ")[1];
-                if (typeof sprint == "object") {
+                if (sprint != null) {
                     nameSufix = sprint.name.split(" ")[1];
                 }
 
+                var assignee1 = {id: 1, name: "Jean Robert"};
+                var assignee2 = {id: 2, name: "Guilherme"};
+
                 var taskList = [
-                    Task("Task " + nameSufix + "1", "PROPOSED", "02:50", "good", "Jean Robert"),
-                    Task("Task " + nameSufix + "2", "PROPOSED", "02:50", "good", "Jean Robert"),
-                    Task("Task " + nameSufix + "3", "ACTIVED", "02:50", "warning", "Jean Robert"),
-                    Task("Task " + nameSufix + "4", "ACTIVED", "02:50", "warning", "Jean Robert"),
-                    Task("Task " + nameSufix + "5", "ACTIVED", "02:50", "bad", "Jean Robert"),
-                    Task("Task " + nameSufix + "6", "RESOLVED", "02:50", "warning", "Jean Robert"),
-                    Task("Task " + nameSufix + "7", "CLOSED", "02:50", "bad", "Jean Robert"),
-                    Task("Task " + nameSufix + "8", "CLOSED", "02:50", "bad", "Jean Robert"),
-                    Task("Task " + nameSufix + "9", "CLOSED", "02:50", "good", "Jean Robert")
+                    Task("task", "Task " + nameSufix + "1", "PROPOSED", "Descrição da tarefa 1", "04:30", "03:30", "01:00", assignee1),
+                    Task("task", "Task " + nameSufix + "2", "ACTIVED", "Descrição da tarefa 2", "04:30", "01:30", "03:00", assignee2),
+                    Task("bug", "Bug " + nameSufix + "3", "PROPOSED", "Descrição do bug 3", "04:30", "03:30", "01:00", assignee1),
+                    Task("bug", "Bug " + nameSufix + "4", "CLOSED", "Descrição do bug 4", "04:30", "01:30", "03:00", assignee1),
+                    Task("task", "Task " + nameSufix + "5", "CLOSED", "Descrição da tarefa 5", "04:30", "00:00", "04:30", assignee1),
+                    Task("task", "Task " + nameSufix + "6", "PROPOSED", "Descrição da tarefa 6", "02:30", "00:00", "02:30", assignee2),
+                    Task("bug", "Bug " + nameSufix + "7", "PROPOSED", "Descrição do bug 7", "02:30", "01:30", "01:00", assignee1)
                 ];
 
+
+                taskList.forEach(function(currentTask) {
+                    setTaskHealth(currentTask);
+                });
+
+                console.log("taskList: ", taskList);
                 deferred.resolve(taskList);
 
             }, 1000);
 
             return deferred.promise;
+        }
+
+        function setTaskHealth(task) {
+            var hoursLeft = parseInt(task.timeLeft.split(":")[0]);
+
+            if (hoursLeft > 2) {
+                task.taskHealth = "good";
+            } else if (hoursLeft > 0) {
+                task.taskHealth = "warning";
+            } else {
+                task.taskHealth = "bad";
+            }
         }
 
     }

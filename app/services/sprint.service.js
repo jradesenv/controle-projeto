@@ -43,9 +43,10 @@
 
             $timeout(function () {
 
-                var Sprint = function (name, startDate, endDate) {
+                var Sprint = function (id, name, startDate, endDate) {
 
                     return {
+                        id: id,
                         name: name,
                         startDate: startDate,
                         endDate: endDate
@@ -62,12 +63,13 @@
 
                 var projectId = project.name.split(" ")[1];
                 var today = new Date();
+                today.setHours(0,0,0,0);
 
                 var sprintList = [
-                    Sprint("Sprint " + projectId + "1", today, sumDays(today, 5)),
-                    Sprint("Sprint " + projectId + "2", subtractDays(today, 5), subtractDays(today, 2)),
-                    Sprint("Sprint " + projectId + "3", subtractDays(today, 15), subtractDays(today, 6)),
-                    Sprint("Sprint " + projectId + "4", subtractDays(today, 7), sumDays(today, 1))
+                    Sprint(1,"Sprint " + projectId + "1", today, sumDays(today, 5)),
+                    Sprint(2, "Sprint " + projectId + "2", subtractDays(today, 5), subtractDays(today, 2)),
+                    Sprint(3, "Sprint " + projectId + "3", subtractDays(today, 15), subtractDays(today, 6)),
+                    Sprint(4, "Sprint " + projectId + "4", subtractDays(today, 7), sumDays(today, 1))
                 ];
 
                 deferred.resolve(sprintList);

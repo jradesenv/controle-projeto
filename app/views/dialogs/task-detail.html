@@ -1,13 +1,13 @@
-<md-dialog aria-label="{{vm.taskType == 'task' ? 'TASK' : 'BUG'}}">
+<md-dialog aria-label="{{vm.task.type == 'task' ? 'TASK' : 'BUG'}}">
 
     <form ng-cloak name="Form">
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <i ng-if="vm.taskType == 'task'" class="fa fa-tasks dialog-header-icon"></i>
-                <i ng-if="vm.taskType == 'bug'" class="fa fa-bug dialog-header-icon"></i>
+                <i ng-if="vm.task.type == 'task'" class="fa fa-tasks dialog-header-icon"></i>
+                <i ng-if="vm.task.type == 'bug'" class="fa fa-bug dialog-header-icon"></i>
 
-                <h2 ng-if="vm.taskType == 'task'">TASK</h2>
-                <h2 ng-if="vm.taskType == 'bug'">BUG</h2>
+                <h2 ng-if="vm.task.type == 'task'">TASK</h2>
+                <h2 ng-if="vm.task.type == 'bug'">BUG</h2>
                 <span flex></span>
                 <md-button aria-label="cancelar" class="md-icon-button" ng-click="vm.cancel()">
                     <i class="fa fa-close"></i>

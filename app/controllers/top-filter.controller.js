@@ -12,6 +12,8 @@
         vm.sprintSelected = null;
         vm.desfazerAlteracoes = desfazerAlteracoes;
         vm.aplicarFiltro = aplicarFiltro;
+        vm.hasProjectChanged = false;
+        vm.hasSprintChanged = false;
 
         var updateHeaderEvent = $rootScope.$on('update-header-event', onUpdateHeaderEvent);
         $scope.$on('$destroy', function () {
@@ -24,6 +26,7 @@
         }
 
         $scope.$watch('vm.projectSelected', onProjectSelected);
+        $scope.$watch('vm.sprintSelected', onSprintSelected);
 
         init();
 
@@ -62,9 +65,15 @@
             vm.sprintSelected = null;
             vm.sprints = [];
 
+            updateChangeFlags();
+
             if (vm.projectSelected != null) {
                 buscarSprintsPorProject(vm.projectSelected);
             }
+        }
+
+        function onSprintSelected() {
+            updateChangeFlags();
         }
 
         function getByNome(arr, nome) {
@@ -83,7 +92,7 @@
             listSprintPromise.then(function (sprintList) {
                 vm.sprints = sprintList;
 
-                if ($rootScope.project != null) {
+                if ($rootScope.sprint != null) {
                     vm.sprintSelected = getByNome(vm.sprints, $rootScope.sprint.name); //para pegar a referencia atual
 
                 } else {
@@ -103,6 +112,13 @@
         function desfazerAlteracoes() {
             vm.projectSelected = $rootScope.project;
             vm.sprintSelected = $rootScope.sprint;
+
+            updateChangeFlags();
+        }
+
+        function updateChangeFlags() { 
+            vm.hasProjectChanged = !angular.equals(vm.projectSelected, $rootScope.project);
+            vm.hasSprintChanged = !angular.equals(vm.sprintSelected, $rootScope.sprint);
         }
 
         function aplicarFiltro() {
@@ -111,6 +127,7 @@
             $rootScope.project = vm.projectSelected;
             $rootScope.sprint = vm.sprintSelected;
 
+            updateChangeFlags();
             $rootScope.updateData();
         }
 

@@ -1,12 +1,27 @@
 <md-card ng-click="taskClicked(task)">
     <md-card-header>
-        <div class="task-state {{ 'task-state-' + task.estadoEstimativa}}" title="{{task.estadoEstimativa | capitalize}}">{{task.estadoEstimativa | taskState}}</div>
+        <div class="task-state {{ 'task-state-' + task.taskHealth}}" title="{{task.taskHealth | capitalize}}">{{task.taskHealth | taskState}}</div>
         <md-card-header-text>
-            <span class="md-title">{{task.titulo | limitTo:20}}{{task.titulo.length > 20 ? '…' : ''}}</span>
-            <span class="md-subhead">Tempo restante: {{task.tempoRestante}}</span>
+            <span class="md-title">{{task.title | limitTo:20}}{{task.title.length > 20 ? '…' : ''}}</span>
+            <span class="md-subhead">Tempo restante: {{task.timeLeft}}</span>
         </md-card-header-text>
     </md-card-header>
     <span class="task-icons-container">
-        <span class="fa fa-user-circle"></span> <span>{{task.responsavel | capitalize}}</span>
+        <div ng-if="task.assignee != null"><span class="fa fa-user-circle"></span> <span>{{task.assignee.name | capitalize}}</span></div>
     </span>
 </md-card>
+
+
+
+<!--
+type: "task",
+title: title,
+status: status,
+description: description,
+estimatedTime: estimatedTime,
+timeLeft: timeLeft,
+timeSpent: timeSpent,
+taskHealth: "",
+assignee: assignee,
+projectId: project.id
+ -->

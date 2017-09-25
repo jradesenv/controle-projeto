@@ -5,7 +5,7 @@
 
     app.controller('kanbanController', KanbanController)
 
-    function KanbanController($scope, $rootScope, $mdDialog, $mdMedia, taskService) {
+    function KanbanController($scope, $rootScope, $mdDialog, $mdMedia, taskService, dialogService) {
         var vm = this;
         vm.errorMessage = null;
         vm.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
@@ -62,6 +62,10 @@
 
         function onTaskClick(task) {
             console.log("onTaskClick: ", task);
+
+            dialogService.show('views/dialogs/task-detail.html', 'taskDetailController', {
+                task: task
+            });
         }
 
         function onTaskStatusChange(index, task, status) {

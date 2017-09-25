@@ -19,7 +19,7 @@
                 clickOutsideToClose: true,
                 parent: angular.element(document.getElementsByClassName('content-div')[0]),
                 locals: {
-                    parameters: parameters
+                    parameters: angular.copy(parameters)
                 }
             };
 

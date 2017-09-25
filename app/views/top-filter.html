@@ -2,8 +2,8 @@
     <form name="FilterForm">
         <md-input-container>
             <label>Projeto</label>
-            <md-select name="project" required ng-model="vm.projectSelected" ng-model-options="{trackBy: '$value.name'}">
-                <md-option ng-repeat="project in vm.projects" ng-value="project" ng-selected="vm.projectSelected == project">
+            <md-select name="project" required ng-model="vm.projectSelected" ng-model-options="{trackBy: '$value.id'}">
+                <md-option ng-repeat="project in vm.projects track by project.id" ng-value="project" ng-selected="vm.projectSelected == project">
                     {{project.name}}
                 </md-option>
             </md-select>
@@ -14,16 +14,16 @@
 
         <md-input-container>
             <label>Sprint</label>
-            <md-select ng-model="vm.sprintSelected" ng-model-options="{trackBy: '$value.name'}">
-                <md-option><em></em></md-option>
-                <md-option ng-repeat="sprint in vm.sprints" ng-value="sprint" ng-selected="vm.sprintSelected == sprint">
+            <md-select ng-model="vm.sprintSelected" ng-model-options="{trackBy: '$value.id'}">
+                <md-option ng-value="null" md-option-empty><em></em></md-option>
+                <md-option ng-repeat="sprint in vm.sprints track by sprint.id" ng-value="sprint" ng-selected="vm.sprintSelected == sprint">
                     {{sprint.name}}
                 </md-option>
             </md-select>
         </md-input-container>
 
         <md-button ng-disabled="!FilterForm.$valid" ng-click="vm.aplicarFiltro();" class="md-raised md-primary">&nbsp APLICAR FILTRO &nbsp</md-button>
-        <md-button ng-cloak ng-show="FilterForm.$valid && (vm.projectSelected != $root.project || vm.sprintSelected != $root.sprint)" ng-click="vm.desfazerAlteracoes();" class="md-raised md-warn">&nbsp DESFAZER &nbsp</md-button>
-        <label ng-cloak ng-show="FilterForm.$valid && (vm.projectSelected != $root.project || vm.sprintSelected != $root.sprint)" class="warning-label">* Existem alterações ainda não aplicadas</label>
+        <md-button ng-cloak ng-show="FilterForm.$valid && (vm.hasProjectChanged || vm.hasSprintChanged)" ng-click="vm.desfazerAlteracoes();" class="md-raised md-warn">&nbsp DESFAZER &nbsp</md-button>
+        <label ng-cloak ng-show="FilterForm.$valid && (vm.hasProjectChanged || vm.hasSprintChanged)" class="warning-label">* Existem alterações ainda não aplicadas</label>
     </form>
 </div>
